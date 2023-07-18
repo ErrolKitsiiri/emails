@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\ExampleMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/email.test', function () {
+    Mail::to('errolantonio325@gmail.com')->send(new ExampleMail);
+    return view('livewire.emails.email-component');
+});
+
 
 Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
+    'auth:sanctum', config('jetstream.auth_session'), 'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
