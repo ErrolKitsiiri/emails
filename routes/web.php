@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/email.test', function () {
-    Mail::to('errolantonio325@gmail.com')->send(new ExampleMail);
-    return view('livewire.emails.email-component');
+Route::get('/send-mail', function () {
+    Mail::to('errolantonio325@gmail.com')->send(new ExampleMail("Errol"));
+    // return view('livewire.emails.email-component');
 });
 
 
